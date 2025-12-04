@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+
+        background-color: transparent;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      nav.nav-with-background {
+        background-color: white;
+      }
+
+      main {
+        display: flex;
+        justify-content: center;
+        padding: 4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>navigation content</nav>
+
+    <main style="height: 300vh; background-color: gray">some content here</main>
+
+    <script>
+      const nav = document.querySelector("nav");
+      const threshold = 200;
+      window.addEventListener("scroll", () => {
+        console.log("scroll", window.scrollY);
+
+        if (window.scrollY > threshold) {
+          nav.classList.add("nav-with-background");
+        } else {
+          nav.classList.remove("nav-with-background");
+        }
+      });
+    </script>
+  </body>
+</html>

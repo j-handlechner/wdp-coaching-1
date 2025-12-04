@@ -139,8 +139,8 @@
       .image-wrapper {
         position: relative;
         width: 50vw;
-        aspect-ratio: 3 / 4;
-        background: #e3e3e3;
+        aspect-ratio: 3 / 3;
+        background: red;
         border-radius: 8px;
         overflow: hidden;
       }
@@ -149,6 +149,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+
         opacity: 0;
         transition: opacity 0.3s ease;
       }
@@ -187,6 +188,33 @@
           </div>
         </div>
       </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          New item here
+          <span>▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-inner">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga
+            tenetur, similique quibusdam libero blanditiis eligendi officia
+            tempora voluptatum? Accusamus atque molestias non voluptatum natus
+            accusantium aspernatur alias cum fugit impedit?
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          No More Padding Pop
+          <span>▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-inner">
+            The padding never disappears — it sits on a stable inner container.
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ---------------- Loading Spinner ---------------- -->
@@ -199,7 +227,11 @@
     <!-- ---------------- Image With Background Loading State ---------------- -->
     <h2>Image With Loading State</h2>
 
-    <div class="image-wrapper" id="imgContainer">
+    <div class="image-wrapper img-container">
+      <img src="https://images.unsplash.com/photo-1637940669070-e7d5ce16e352" />
+    </div>
+
+    <div class="image-wrapper img-container">
       <img src="https://images.unsplash.com/photo-1637940669070-e7d5ce16e352" />
     </div>
 
@@ -237,12 +269,20 @@
         });
       });
       /* ---------- Image Loading State Logic ---------- */
-      const wrapper = document.getElementById("imgContainer");
-      const image = wrapper.querySelector("img");
 
-      image.addEventListener("load", () => {
-        wrapper.classList.add("loaded");
-      });
+      const handleImages = () => {
+        const allWrappers = document.querySelectorAll(".img-container");
+
+        allWrappers.forEach((wrapper) => {
+          const imageWithinWrapper = wrapper.querySelector("img");
+
+          imageWithinWrapper.addEventListener("load", () => {
+            wrapper.classList.add("loaded");
+          });
+        });
+      };
+
+      handleImages();
     </script>
   </body>
 </html>

@@ -1,4 +1,3 @@
-// register scrolltrigger
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 /* -----------------------------
@@ -15,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
     stagger: 0.15,
     scrollTrigger: {
       trigger: ".effect-line",
-      start: "top 80%",
+      start: "top center",
     },
   });
 })();
