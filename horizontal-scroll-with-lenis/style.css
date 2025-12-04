@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 .process {
-  width: 225vw; /* this needs to be the sum of all the process_items widths */
+  width: 400vw; /* this needs to be the sum of all the process_items widths */
   display: flex;
   flex-wrap: nowrap;
 
@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   padding: 0 100px;
-  width: 75vw;
+  width: 100vw;
 
   span {
     font-size: 30px;
