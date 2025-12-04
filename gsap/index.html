@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP ScrollTrigger TextSplit Showcase</title>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"
+      defer
+    ></script>
+    <script src="script.js" defer></script>
+
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #111;
+        color: #fff;
+      }
+
+      section {
+        padding: 20vh 10vw;
+        border-bottom: 1px solid #333;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0 0 2rem 0;
+        line-height: 1.3;
+        font-size: 2rem;
+      }
+
+      .demo-title {
+        font-size: 5rem;
+        text-align: center;
+        padding-top: 10vh;
+        padding-bottom: 10vh;
+      }
+
+      .mask {
+        overflow: hidden;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="demo-title">GSAP ScrollTrigger + SplitText Showcase</h1>
+
+    <!-- 1. Line Reveal -->
+    <section>
+      <h2>Line Reveal (Masking + Stagger)</h2>
+      <p class="effect-line">
+        GSAP’s SplitText plugin allows powerful line-based animations that
+        reveal each line with smooth masking and easing.
+      </p>
+    </section>
+
+    <!-- 2. Word Up Animation -->
+    <section>
+      <h2>Word Rise (Words slide up independently)</h2>
+      <p class="effect-words">
+        Each word animates upward as you scroll, giving a smooth floating reveal
+        effect powered by ScrollTrigger and SplitText.
+      </p>
+    </section>
+
+    <!-- 3. Character Fade + Move -->
+    <section>
+      <h2>Character Fade-In Stagger</h2>
+      <p class="effect-chars">
+        Character-level animations allow expressive micro-typography motion for
+        dramatic effects in scrolling interfaces.
+      </p>
+    </section>
+
+    <!-- 4. Scrub Scroll Timeline -->
+    <section>
+      <h2>Scrub-based Text Distortion</h2>
+      <p class="effect-scrub">
+        Scrub animations tie scroll position directly to animation progress,
+        enabling synchronized text transformations.
+      </p>
+    </section>
+
+    <!-- 5. Line Clip Mask -->
+    <section>
+      <h2>Clip Mask Line Wipe</h2>
+      <p class="effect-clip">
+        This effect uses clipPath to wipe text lines horizontally, creating a
+        modern cinematic reveal perfect for hero sections.
+      </p>
+    </section>
+  </body>
+</html>

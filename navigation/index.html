@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP Nav — Burger Morph + Sidebar</title>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background: #111;
+        color: #fff;
+        box-sizing: border-box;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
+      }
+
+      .logo {
+        font-size: 1.4rem;
+        font-weight: bold;
+      }
+
+      /* Desktop links */
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      /* BURGER */
+      .burger {
+        width: 30px;
+        height: 22px;
+        position: relative;
+        display: none;
+        cursor: pointer;
+      }
+
+      .burger span {
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        left: 0;
+        background: white;
+        border-radius: 3px;
+        transition: 0.25s ease;
+      }
+
+      .burger span:nth-child(1) {
+        top: 0;
+      }
+      .burger span:nth-child(2) {
+        top: 9px;
+      }
+      .burger span:nth-child(3) {
+        bottom: 0;
+      }
+
+      /* Sidebar menu */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100vw;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        padding: 6rem 2rem;
+        gap: 2rem;
+        z-index: 900;
+      }
+
+      .sidebar a {
+        color: white;
+        font-size: 1.2rem;
+        text-decoration: none;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .burger {
+          display: block;
+        }
+      }
+
+      /* Demo content */
+      section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">MySite</div>
+
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Work</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <!-- Burger with 3 spans -->
+      <div class="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <a href="#">Home</a>
+      <a href="#">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <!-- Demo sections -->
+    <section>Section One</section>
+    <section>Section Two</section>
+
+    <script>
+      const burger = document.querySelector(".burger");
+      const sidebar = document.querySelector(".sidebar");
+      const links = sidebar.querySelectorAll("a");
+      let open = false;
+
+      /* ---------------------------------------------
+   GSAP Timeline for sidebar + stagger links
+--------------------------------------------- */
+      const tl = gsap.timeline({ paused: true });
+      tl.to(sidebar, {
+        x: window.innerWidth,
+        duration: 0.45,
+        ease: "power3.out",
+      });
+
+      tl.from(
+        links,
+        {
+          x: -20,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+        "-=0.2"
+      );
+
+      /* ---------------------------------------------
+   Burger Morph Animation (CSS transforms)
+--------------------------------------------- */
+      function morphBurger(open) {
+        const [top, mid, bottom] = burger.children;
+
+        if (open) {
+          gsap.to(top, { y: 9, rotate: 45, duration: 0.3, ease: "power2.out" });
+          gsap.to(mid, { opacity: 0, duration: 0.2 });
+          gsap.to(bottom, {
+            y: -9,
+            rotate: -45,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        } else {
+          gsap.to(top, { y: 0, rotate: 0, duration: 0.3 });
+          gsap.to(mid, { opacity: 1, duration: 0.2 });
+          gsap.to(bottom, { y: 0, rotate: 0, duration: 0.3 });
+        }
+      }
+
+      /* ---------------------------------------------
+   Toggle navigation
+--------------------------------------------- */
+      burger.addEventListener("click", () => {
+        open = !open;
+
+        morphBurger(open);
+        open ? tl.play() : tl.reverse();
+      });
+
+      /* Close menu when clicking a link */
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          open = false;
+          morphBurger(false);
+          tl.reverse();
+        });
+      });
+    </script>
+  </body>
+</html>
