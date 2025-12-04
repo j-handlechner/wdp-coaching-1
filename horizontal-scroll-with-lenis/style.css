@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+.process-wrap {
+  overflow: hidden;
+}
+.process {
+  width: 225vw; /* this needs to be the sum of all the process_items widths */
+  display: flex;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  height: 100vh !important;
+}
+
+.process__item {
+  display: flex;
+  align-items: center;
+  padding: 0 100px;
+  width: 75vw;
+
+  span {
+    font-size: 30px;
+    display: block;
+  }
+}
+
+.empty {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p > span {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+  display: block;
+}
