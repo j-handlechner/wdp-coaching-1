@@ -185,10 +185,4 @@ timelineSteps.forEach((step) => {
   });
 });
 
-// Submit
-document.getElementById("multiStepForm").addEventListener("submit", (e) => {
-  // e.preventDefault();
-  alert("Form submitted successfully!");
-});
-
 updateUI();
