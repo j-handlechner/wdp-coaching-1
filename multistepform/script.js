@@ -110,6 +110,9 @@ function updateReview() {
 
   const name = document.getElementById("name").value || "—";
   const email = document.getElementById("email").value || "—";
+  const address = document.getElementById("address").value || "—";
+  const phone = document.getElementById("phone").value || "—";
+
   const room =
     document.querySelector('input[name="room"]:checked')?.nextElementSibling
       ?.textContent || "—";
@@ -125,6 +128,14 @@ function updateReview() {
     <div class="review-item">
       <span class="review-label">Email</span>
       <span class="review-value">${email}</span>
+    </div>
+     <div class="review-item">
+      <span class="review-label">Address</span>
+      <span class="review-value">${address}</span>
+    </div>
+     <div class="review-item">
+      <span class="review-label">Phone</span>
+      <span class="review-value">${phone}</span>
     </div>
     <div class="review-item">
       <span class="review-label">Room</span>
